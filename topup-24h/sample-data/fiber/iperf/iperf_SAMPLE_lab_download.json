@@ -1,0 +1,17 @@
+{
+  "start": {
+    "test_start": {
+      "protocol": "TCP",
+      "num_streams": 4,
+      "duration": 30
+    }
+  },
+  "end": {
+    "sum_received": {
+      "bits_per_second": 700000000,
+      "bytes": 2621440000,
+      "seconds": 30,
+      "retransmits": 12
+    }
+  }
+}

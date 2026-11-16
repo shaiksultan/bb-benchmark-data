@@ -1,0 +1,9 @@
+timestamp_utc,network,endpoint,link,device,kpi_id,metric,value,unit,status,target,streams,seconds,retransmits,bytes,rsrp_dbm,sinr_db,band
+2026-11-16T07:41:45.017932Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-003,RTT average,11.2,ms,PASS,lab.example,,,,,,,
+2026-11-16T07:41:45.018596Z,fiber,public,ethernet,SAMPLE-PROBE,KPI-008,TCP connect - eand.ae,8.1,ms,PASS,https://www.eand.ae/,,,,,,,
+2026-11-16T07:41:45.019042Z,fiber,public,ethernet,SAMPLE-PROBE,KPI-009,TLS handshake - eand.ae,30.2,ms,PASS,https://www.eand.ae/,,,,,,,
+2026-11-16T07:41:45.019266Z,fiber,public,ethernet,SAMPLE-PROBE,KPI-007,TTFB - eand.ae,75.0,ms,PASS,https://www.eand.ae/,,,,,,,
+2026-11-16T07:41:45.019507Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-001,Download throughput,700.0,Mbps,PASS,lab.example:5202,4,30,12,2621440000,,,
+2026-11-16T07:41:45.020123Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-003L,RTT under load,14.5,ms,PASS,lab.example,,,,,,,
+2026-11-16T07:41:45.020456Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-005,UDP packet loss,0.0,%,PASS,lab.example:5202,,60,,75000000,,,
+2026-11-16T07:41:45.020677Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-033,Estimated Voice MOS,4.4,MOS,PASS,lab.example,,,,,,,

@@ -1,0 +1,19 @@
+timestamp_utc=2026-11-16T07:00:00Z
+hostname=SAMPLE-PROBE
+os=Ubuntu 24.04.3 LTS
+Linux SAMPLE-PROBE 6.8.0-110-generic x86_64 GNU/Linux
+--- iperf3 ---
+iperf 3.16 (cJSON 1.7.15)
+--- curl ---
+curl 8.5.0
+--- python ---
+Python 3.12.3
+--- sipp ---
+SIPp v3.7.2-TLS-SCTP-PCAP.
+--- speedtest ---
+Speedtest by Ookla 1.2.0.84
+--- link ---
+default_iface=enp1s0
+Speed: 2500Mb/s
+Duplex: Full
+Link detected: yes

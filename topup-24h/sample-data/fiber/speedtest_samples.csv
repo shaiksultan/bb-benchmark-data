@@ -1,0 +1,2 @@
+timestamp_utc,network,link,device,download_mbps,upload_mbps,ping_latency_ms,ping_jitter_ms,packet_loss_pct,server_name,server_id,status
+2026-11-16T07:05:00.000000Z,fiber,ethernet,SAMPLE-PROBE,890.0,320.0,8.0,0.4,0.0,Example server,00000,PASS

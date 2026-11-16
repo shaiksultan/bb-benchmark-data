@@ -1,0 +1,2 @@
+timestamp_utc,network,server,port,attempted_calls,successful_calls,failed_calls,success_rate_pct,hold_ms,return_code
+2026-11-16T07:10:00.000000Z,fiber,lab.example,5062,20,20,0,100.0,3000,0
