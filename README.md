@@ -1,6 +1,6 @@
 # bb-benchmark-data
 
-Public package for the broadband benchmark: the September probe logs, the workbooks, and the 24-hour top-up scripts.
+Public package for the broadband benchmark: the workbooks and the 24-hour top-up scripts.
 
 Paths compared: fixed fiber, 5G fixed wireless, mobile 5G, and LEO satellite.
 
@@ -8,7 +8,6 @@ Paths compared: fixed fiber, 5G fixed wireless, mobile 5G, and LEO satellite.
 
 | File | What it is |
 | --- | --- |
-| [data/data.zip](data/data.zip) | Raw probe logs, 4–6 September 2026, all four paths |
 | [topup-24h.zip](topup-24h.zip) | 24-hour follow-up scripts. The same files are in [topup-24h/](topup-24h/) |
 | [data/network-kpi-timestamp.xlsx](data/network-kpi-timestamp.xlsx) | Network KPIs with timestamps, after the 1.5×IQR screen |
 | [data/network-kpi-outliers-availability.xlsx](data/network-kpi-outliers-availability.xlsx) | Outlier candidates and the availability log, including failed pings |
