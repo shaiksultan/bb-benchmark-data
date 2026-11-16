@@ -9,7 +9,6 @@ Paths compared: fixed fiber, 5G fixed wireless, mobile 5G, and LEO satellite.
 | File | What it is |
 | --- | --- |
 | [data/data.zip](data/data.zip) | Raw probe logs, 4–6 September 2026, all four paths |
-| [data/fiber-rerun-2026-09-11.zip](data/fiber-rerun-2026-09-11.zip) | Later fiber probe log, 11–13 September, plus 11 September screenshots for fixed wireless and mobile |
 | [topup-24h.zip](topup-24h.zip) | 24-hour follow-up scripts. The same files are in [topup-24h/](topup-24h/) |
 | [data/network-kpi-timestamp.xlsx](data/network-kpi-timestamp.xlsx) | Network KPIs with timestamps, after the 1.5×IQR screen |
 | [data/network-kpi-outliers-availability.xlsx](data/network-kpi-outliers-availability.xlsx) | Outlier candidates and the availability log, including failed pings |
