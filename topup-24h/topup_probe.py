@@ -122,21 +122,18 @@ class Probe:
             self.sample("KPI-006", "DNS response time", "", "ms", "FAIL", self.a.dns_name, "public")
 
     def https_one(self, url, name):
-        fmt = "%{time_namelookup},%{time_connect},%{time_appconnect},%{time_starttransfer},%{time_total},%{http_code},%{remote_ip}"
+        fmt = "%{time_namelookup},%{time_connect},%{time_starttransfer},%{time_total},%{http_code},%{remote_ip}"
         p = run(["curl", "-L", "--max-time", str(self.a.curl_max), "-o", "/dev/null", "-sS", "-w", fmt, url], timeout=self.a.curl_timeout)
         if p.returncode != 0:
-            for kpi, metric in [("KPI-007", "TTFB"), ("KPI-008", "TCP connect"), ("KPI-009", "TLS handshake")]:
+            for kpi, metric in [("KPI-007", "TTFB"), ("KPI-008", "TCP connect")]:
                 self.sample(kpi, f"{metric} - {name}", "", "ms", "FAIL", url, "public")
             return
         try:
-            _dn, tc, ta, ttfb, _total, code, _rip = p.stdout.strip().split(",", 6)
+            _dn, tc, ttfb, _total, code, _rip = p.stdout.strip().split(",", 5)
             tc = float(tc) * 1000
-            ta = float(ta) * 1000
             ttfb = float(ttfb) * 1000
-            tls = max(0.0, ta - tc)
             status = "PASS" if 200 <= int(code) < 500 else "FAIL"
             self.sample("KPI-008", f"TCP connect - {name}", round(tc, 3), "ms", status, url, "public")
-            self.sample("KPI-009", f"TLS handshake - {name}", round(tls, 3), "ms", status, url, "public")
             self.sample("KPI-007", f"TTFB - {name}", round(ttfb, 3), "ms", status, url, "public")
         except Exception as e:
             self.logline(f"WEB PARSE FAIL {name} {e}")
@@ -287,7 +284,6 @@ class Probe:
         """Write one illustrative row of each KPI. Not a measurement."""
         self.sample("KPI-003", "RTT average", 11.2, "ms", "PASS", "lab.example", "lab")
         self.sample("KPI-008", "TCP connect - eand.ae", 8.1, "ms", "PASS", "https://www.eand.ae/", "public")
-        self.sample("KPI-009", "TLS handshake - eand.ae", 30.2, "ms", "PASS", "https://www.eand.ae/", "public")
         self.sample("KPI-007", "TTFB - eand.ae", 75.0, "ms", "PASS", "https://www.eand.ae/", "public")
         self.sample("KPI-001", "Download throughput", 700.0, "Mbps", "PASS", "lab.example:5202", "lab", 4, 30, 12, 2621440000)
         self.sample("KPI-003L", "RTT under load", 14.5, "ms", "PASS", "lab.example", "lab")

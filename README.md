@@ -26,7 +26,7 @@ Network, written by the probe scripts:
 - UDP jitter and UDP packet loss
 - Ping loss and probe success. Every failed ping stays in the file.
 - DNS response time
-- TCP connect, TLS handshake, and time to first byte. TLS is the time after TCP, from curl.
+- TCP connect and time to first byte, from curl.
 - Voice-pattern delay, jitter, loss, and an estimated MOS from delay and loss. This is not a listening score.
 - Gaming-pattern delay, jitter, and loss
 - Ookla download, upload, ping, and server id

@@ -12,7 +12,7 @@ Install the same versions on the lab server and every probe. These are the versi
 | --- | --- | --- |
 | OS | Ubuntu 24.04.3 LTS | Lab server, both cloud VMs, every probe |
 | iperf3 | 3.16 | All of them. The Ubuntu 24.04 package is 3.16. Ubuntu 22.04 installs 3.9, so those probes need 24.04. |
-| curl | 8.5.0 | Probes. TCP, TLS, and TTFB come from curl. |
+| curl | 8.5.0 | Probes. TCP connect and time to first byte come from curl. |
 | Python | 3.12 | Probes and the lab server |
 | SIPp | 3.7.2 | Lab server and probes. Copy the lab server binary if `apt` installs 3.6.1 or 3.7.7. Cloud VMs do not need SIPp. |
 | Ookla Speedtest CLI | 1.2.0.84 | Probes only |
@@ -115,7 +115,7 @@ Each command runs for `HOURS` (24). It starts the once-per-second ping monitor, 
 | Test | How often | Far end | Setting |
 | --- | --- | --- | --- |
 | Ping availability | 1 second | Lab, UAE, Europe | `RELIABILITY_INTERVAL_SEC` |
-| Idle RTT, DNS, TCP, TLS, TTFB | 5 minutes | Ping to all three hosts. Web timing to the two public pages. | `LIGHT_INTERVAL_SEC` |
+| Idle RTT, DNS, TCP connect, time to first byte | 5 minutes | Ping to all three hosts. Web timing to the two public pages. | `LIGHT_INTERVAL_SEC` |
 | iperf3 download and upload | 30 minutes | All three hosts | 4 streams, 30 seconds. A parallel ping is stored as RTT under load. |
 | UDP jitter and loss | 15 minutes | All three hosts | 10 Mb/s for 60 seconds |
 | Voice pattern and MOS | 30 minutes | Lab only | 150 seconds, 100 kb/s, 200-byte packets |
@@ -124,7 +124,7 @@ Each command runs for `HOURS` (24). It starts the once-per-second ping monitor, 
 
 iperf3 is run with `-J`. The JSON is saved under `results/<path>/iperf/` before the bitrate is read.
 
-TCP, TLS, and TTFB come from curl. TCP is `time_connect`. TLS is `time_appconnect` minus `time_connect`. TTFB is `time_starttransfer`. Curl follows redirects.
+TCP connect and time to first byte come from curl. TCP is `time_connect`. Time to first byte is `time_starttransfer`. Curl follows redirects.
 
 Voice MOS is the same E-model-style estimate as the September script. It is not a listening score.
 
