@@ -119,6 +119,7 @@ Each command runs for `HOURS` (24). It starts the once-per-second ping monitor, 
 | iperf3 download and upload | 30 minutes | All three hosts | 4 streams, 30 seconds. A parallel ping is stored as RTT under load. |
 | UDP jitter and loss | 15 minutes | All three hosts | 10 Mb/s for 60 seconds |
 | Voice pattern and MOS | 30 minutes | Lab only | 150 seconds, 100 kb/s, 200-byte packets |
+| Gaming P95 and gaming jitter | 30 minutes, first run after 30 minutes | Lab only | 300 seconds, 256 kb/s. Same settings as the September gaming test |
 | Ookla | 60 minutes | The pinned server, or Ookla's choice | Server id is stored |
 | SIPp | 30 minutes | Lab only | 20 calls, 1 per second, 3000 ms hold passed to SIPp |
 

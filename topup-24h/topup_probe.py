@@ -234,6 +234,32 @@ class Probe:
             mos = max(1, min(4.5, mos))
             self.sample("KPI-033", "Estimated Voice MOS", round(mos, 3), "MOS", "PASS", host, "lab")
 
+    def gaming(self, host):
+        seconds = self.a.gaming_seconds
+        _avg, _p50, p95, p99, _ping_loss = self.ping_stats(host, 100, 0.1)
+        if p95 is None:
+            self.sample("KPI-034", "Gaming RTT P95", "", "ms", "FAIL", host, "lab")
+        else:
+            self.sample("KPI-034", "Gaming RTT P95", round(p95, 3), "ms", "PASS", host, "lab")
+            if p99 is not None:
+                self.sample("KPI-034", "Gaming RTT P99", round(p99, 3), "ms", "PASS", host, "lab")
+        p = run(
+            ["iperf3", "-c", host, "-p", str(self.a.iperf_port), "-u", "-b", self.a.gaming_bitrate, "-t", str(seconds), "-J"],
+            timeout=seconds + self.a.iperf_extra,
+        )
+        self.save_json("lab", "gaming", p.stdout)
+        if p.returncode != 0:
+            self.sample("KPI-035", "Gaming jitter", "", "ms", "FAIL", host, "lab", "", seconds)
+            self.logline(f"GAMING FAIL rc={p.returncode}")
+            return
+        try:
+            s = json.loads(p.stdout)["end"]["sum"]
+            self.sample("KPI-035", "Gaming jitter", round(float(s.get("jitter_ms", 0)), 3), "ms", "PASS", host, "lab", "", seconds)
+            self.sample("KPI-036", "Gaming packet loss", round(float(s.get("lost_percent", 0)), 3), "%", "PASS", host, "lab", "", seconds, "", s.get("bytes", ""))
+        except Exception as e:
+            self.sample("KPI-035", "Gaming jitter", "", "ms", "FAIL", host, "lab", "", seconds)
+            self.logline(f"GAMING PARSE FAIL {e}")
+
     def light(self):
         self.logline("LIGHT cycle")
         for name, host, _port in self.endpoints:
@@ -262,6 +288,7 @@ class Probe:
         start = time.time()
         end = start + self.a.hours * 3600
         next_light = next_iperf = next_udp = next_voice = start
+        next_game = start + self.a.gaming_interval
         self.logline(f"TOPUP START hours={self.a.hours} link={self.a.link} device={self.a.device}")
         while time.time() < end:
             now = time.time()
@@ -277,6 +304,9 @@ class Probe:
             if now >= next_voice:
                 self.voice_mos(self.a.lab_host)
                 next_voice += self.a.voice_interval
+            if now >= next_game:
+                self.gaming(self.a.lab_host)
+                next_game += self.a.gaming_interval
             time.sleep(2)
         self.logline("TOPUP COMPLETE")
 
@@ -289,6 +319,8 @@ class Probe:
         self.sample("KPI-003L", "RTT under load", 14.5, "ms", "PASS", "lab.example", "lab")
         self.sample("KPI-005", "UDP packet loss", 0.0, "%", "PASS", "lab.example:5202", "lab", "", 60, "", 75000000)
         self.sample("KPI-033", "Estimated Voice MOS", 4.40, "MOS", "PASS", "lab.example", "lab")
+        self.sample("KPI-034", "Gaming RTT P95", 11.6, "ms", "PASS", "lab.example", "lab")
+        self.sample("KPI-035", "Gaming jitter", 0.5, "ms", "PASS", "lab.example", "lab")
         demo = {
             "start": {"test_start": {"protocol": "TCP", "num_streams": 4, "duration": 30}},
             "end": {"sum_received": {"bits_per_second": 700000000, "bytes": 2621440000, "seconds": 30, "retransmits": 12}},
@@ -321,6 +353,9 @@ def main():
     ap.add_argument("--iperf-interval", type=int, default=1800)
     ap.add_argument("--udp-interval", type=int, default=900)
     ap.add_argument("--voice-interval", type=int, default=1800)
+    ap.add_argument("--gaming-interval", type=int, default=1800)
+    ap.add_argument("--gaming-seconds", type=int, default=300)
+    ap.add_argument("--gaming-bitrate", default="256K")
     ap.add_argument("--ping-wait", type=int, default=2)
     ap.add_argument("--dig-query", type=int, default=3)
     ap.add_argument("--dig-timeout", type=int, default=10)

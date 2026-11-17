@@ -6,3 +6,5 @@ timestamp_utc,network,endpoint,link,device,kpi_id,metric,value,unit,status,targe
 2026-11-16T07:41:45.020123Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-003L,RTT under load,14.5,ms,PASS,lab.example,,,,,,,
 2026-11-16T07:41:45.020456Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-005,UDP packet loss,0.0,%,PASS,lab.example:5202,,60,,75000000,,,
 2026-11-16T07:41:45.020677Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-033,Estimated Voice MOS,4.4,MOS,PASS,lab.example,,,,,,,
+2026-11-16T07:41:45.021001Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-034,Gaming RTT P95,11.6,ms,PASS,lab.example,,,,,,,
+2026-11-16T07:41:45.021220Z,fiber,lab,ethernet,SAMPLE-PROBE,KPI-035,Gaming jitter,0.5,ms,PASS,lab.example,,,,,,,

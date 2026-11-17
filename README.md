@@ -28,7 +28,7 @@ Network, written by the probe scripts:
 - DNS response time
 - TCP connect and time to first byte, from curl.
 - Voice-pattern delay, jitter, loss, and an estimated MOS from delay and loss. This is not a listening score.
-- Gaming-pattern delay, jitter, and loss
+- Gaming P95 and gaming jitter to the lab. The same test also stores gaming P99 and gaming packet loss
 - Ookla download, upload, ping, and server id
 - SIPp call setup toward the lab server
 

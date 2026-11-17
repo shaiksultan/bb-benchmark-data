@@ -38,6 +38,8 @@ python3 topup_probe.py \
   --hours "${HOURS}" --offset "${OFFSET_SEC}" \
   --light-interval "${LIGHT_INTERVAL_SEC}" --iperf-interval "${IPERF_INTERVAL_SEC}" \
   --udp-interval "${UDP_INTERVAL_SEC}" --voice-interval "${VOIP_INTERVAL_SEC}" \
+  --gaming-interval "${GAMING_INTERVAL_SEC}" --gaming-seconds "${GAMING_SECONDS}" \
+  --gaming-bitrate "${GAMING_BITRATE}" \
   --ping-wait "${PING_WAIT_SEC}" --dig-query "${DIG_QUERY_SEC}" --dig-timeout "${DIG_PROCESS_SEC}" \
   --curl-max "${CURL_MAX_SEC}" --curl-timeout "${CURL_PROCESS_SEC}" \
   --iperf-extra "${IPERF_EXTRA_SEC}" --voice-seconds "${VOICE_SECONDS}" \
