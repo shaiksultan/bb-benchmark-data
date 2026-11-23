@@ -15,6 +15,15 @@ Paths compared: fixed fiber, 5G fixed wireless, mobile 5G, and LEO satellite.
 | [data/youtube-netflix-ott.xlsx](data/youtube-netflix-ott.xlsx) | YouTube and Netflix playback runs |
 | [data/video-quality-uvq.xlsx](data/video-quality-uvq.xlsx) | GoChat and BOTIM video scores from Google UVQ |
 
+18 November, AUH-Musaffah. These sit beside the September workbooks above. WiFi in the application file is a separate path from September fiber.
+
+| File | What it is |
+| --- | --- |
+| [data/nov18-musaffah/network-24h-nov18.zip](data/nov18-musaffah/network-24h-nov18.zip) | Probe logs for fiber, 5G fixed wireless, mobile 5G, and LEO, about 24 hours |
+| [data/nov18-musaffah/application-qoe-musaffah-nov18.xlsx](data/nov18-musaffah/application-qoe-musaffah-nov18.xlsx) | Handset application timings, including Netflix first content |
+| [data/nov18-musaffah/youtube-netflix-nov18.xlsx](data/nov18-musaffah/youtube-netflix-nov18.xlsx) | YouTube Stats for Nerds and Netflix audio/video reads |
+| [data/nov18-musaffah/gochat-botim-uvq-sep-vs-musaffah.xlsx](data/nov18-musaffah/gochat-botim-uvq-sep-vs-musaffah.xlsx) | GoChat and BOTIM UVQ, September against Musaffah |
+
 `topup-24h/sample-data/` shows the column layout. Those rows are placeholders, not measurements.
 
 ## KPIs the scripts record
